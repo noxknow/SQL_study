@@ -1,4 +1,3 @@
-```sql
 USE sqlDB;
 DROP TABLE buyTbl; -- 구매테이블은 실습에 필요없으므로 삭제.
 CREATE TABLE backup_userTbl( 
@@ -49,4 +48,3 @@ DELETE FROM userTbl WHERE height >= 177;
 select * from userTbl;
 
 select * from backup_userTbl;
-```
