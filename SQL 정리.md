@@ -4,6 +4,7 @@
   - [1.1  데이터베이스 유형의 구분](#데이터베이스-유형의-구분) <br/>
   - [1.2  데이터베이스 관리 시스템 (DBMS)](#데이터베이스-관리-시스템-(DBMS)) <br/>
 - [2. SQL 쿼리 실행 순서](#SQL-쿼리-실행-순서) <br/>
+- [3. SQL Join](#SQL-Join) <br/>
 
 # :bookmark_tabs: **데이터베이스**
 
@@ -90,3 +91,68 @@ HAVING 은 GROUP BY를 통해 그룹핑 후에 그 그룹에 사용하는 조건
 ---
 
 최종 결과물을 몇개까지 보여줄지 선택합니다
+
+# SQL Join
+
+### **예제 테이블**
+
+![image](https://github.com/noxknow/SQL_study/assets/122594223/f3fc48a7-a444-42fd-8fce-6d1594bfa97a)
+
+### **MySQL INNER JOIN**
+
+- 두 테이블을 조인하여 조인절에 해당하는 결과만 생성 (같은 경우만)
+
+```sql
+SELECT t1.id, t2.id
+FROM t1
+INNER JOIN t2
+ON t1.pattern = t2.pattern;
+```
+
+*결과*
+
+| id | id |
+| --- | --- |
+| 2 | A |
+| 3 | B |
+
+### **MySQL LEFT OUTER JOIN**
+
+- 왼쪽에 위치한 테이블 전부가 포함 & 오른쪽에 위치한 테이블은 조건이 만족하는 경우만 포함
+
+```sql
+SELECT t1.id, t2.id
+FROM t1
+LEFT JOIN t2
+ON t1.pattern = t2.pattern
+ORDER BY t1.id;
+```
+
+*결과*
+
+| id | id |
+| --- | --- |
+| 1 | null |
+| 2 | A |
+| 3 | B |
+
+### **MySQL RIGHT OUTER JOIN**
+
+- 오른쪽에 위치한 테이블 전부가 포함 & 왼쪽에 위치한 테이블은 조건이 만족하는 경우만 포함
+
+```sql
+SELECT t1.id, t2.id
+FROM t1
+RIGHT JOIN t2
+ON t1.pattern = t2.pattern
+ORDER BY t2.id;
+```
+
+*결과*
+
+| id | id |
+| --- | --- |
+| 2 | A |
+| 3 | B |
+| null | C |
+
